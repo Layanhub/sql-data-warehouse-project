@@ -52,3 +52,7 @@ SELECT cst_firstname
  SELECT cst_gndr
  FROM bronze.crm_cust_info
  WHERE cst_gndr != TRIM(cst_gndr)
+
+ --Data standardization and consistency
+ SELECT distinct cst_marital_status
+ from bronze.crm_cust_info
