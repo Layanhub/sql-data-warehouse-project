@@ -1,1 +1,58 @@
+/*QUALITY CHECK
+   CHECKING FOR DUPLICATES AND NULL VALUES IN THE cst_id COLUMN
+ */
 
+ SELECT 
+ cst_id,
+ COUNT(*)
+ FROM silver.crm_cust_info
+ GROUP BY cst_id
+ HAVING COUNT(*) > 1 OR cst_id IS NULL
+
+ SELECT 
+ *
+ FROM silver.crm_cust_info
+ WHERE cst_id = 29473
+
+ SELECT 
+ *
+ FROM silver.crm_cust_info
+ WHERE cst_id = 29449
+
+ SELECT 
+ *
+ FROM silver.crm_cust_info
+ WHERE cst_id = 29433
+
+ SELECT 
+ *
+ FROM silver.crm_cust_info
+ WHERE cst_id = 29483
+
+ SELECT 
+ *
+ FROM silver.crm_cust_info
+ WHERE cst_id = 29466
+
+ SELECT 
+ *
+ FROM silver.crm_cust_info
+ WHERE cst_id IS NULL
+
+--Check for unwanted spaces
+ --expectation: no results
+SELECT cst_firstname
+ FROM silver.crm_cust_info
+ WHERE cst_firstname != TRIM(cst_firstname)
+
+ SELECT cst_lastname
+ FROM silver.crm_cust_info
+ WHERE cst_lastname != TRIM(cst_lastname)
+
+ SELECT cst_gndr
+ FROM silver.crm_cust_info
+ WHERE cst_gndr != TRIM(cst_gndr)
+
+ --Data standardization and consistency
+ SELECT distinct cst_marital_status
+ from silver.crm_cust_info
