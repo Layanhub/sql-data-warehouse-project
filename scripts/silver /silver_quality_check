@@ -1,7 +1,6 @@
-/*QUALITY CHECK
-   CHECKING FOR DUPLICATES AND NULL VALUES IN THE cst_id COLUMN
+/*QUALITY CHECK FOR CUST_INFO
  */
-
+--CHECKING FOR DUPLICATES AND NULL VALUES IN THE cst_id COLUMN
  SELECT 
  cst_id,
  COUNT(*)
@@ -56,3 +55,5 @@ SELECT cst_firstname
  --Data standardization and consistency
  SELECT distinct cst_marital_status
  from silver.crm_cust_info
+
+
