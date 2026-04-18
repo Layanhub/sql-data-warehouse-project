@@ -56,3 +56,14 @@ SELECT cst_firstname
  --Data standardization and consistency
  SELECT distinct cst_marital_status
  from bronze.crm_cust_info
+
+--	QUALITY CHECKS FOR PRD_INFO
+SELECT
+prd_nm
+from bronze.crm_prd_info 
+where prd_nm != TRIM(prd_nm)
+
+--CHECK FOR INVALID DATE ORDERS
+select *
+from bronze.crm_prd_info
+WHERE prd_end_dt < prd_start_dt
